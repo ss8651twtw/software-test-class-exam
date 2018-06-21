@@ -1,0 +1,16 @@
+language: cpp
+os:
+  - linux
+compiler:
+  - g++
+install:
+  - sudo pip install codecov
+script:
+  - make -C make
+  - make -C make test
+  - make -C make gcov
+branches:
+  only:
+    - master
+after_success:
+  - codecov -t c6180706-1b18-4fe4-8197-532cca9cc176 -X gcov
